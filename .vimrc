@@ -1,5 +1,6 @@
 syntax on                   " Enable syntax coloring
 set cursorline              " Highlight the current line
+set hlsearch                " Highlight all search pattern occurrences
 set number                  " Enable line numbers
 set pastetoggle=<F2>        " Toggle INSERT (PASTE) with F2
 set ruler                   " Enable the ruler (line, column, virtual column)
