@@ -1,0 +1,20 @@
+alias c='/usr/bin/clear'
+alias env='/usr/bin/env | sort'
+alias errcho='>&2 /bin/echo'
+alias ls='/bin/ls --color=auto -F'
+
+# Shortcut for printing own processes in a customized way.
+function pgrep() {
+    /usr/bin/pgrep "$@" | /usr/bin/xargs ps u -p | /bin/grep -v 'xargs ps u -p'
+}
+
+# Clears out one or more keys from ~/.ssh/known_hosts.
+# This should only be used in environments where hosts get reinstalled a lot.
+function rm-known-host() {
+    for hostname in "$@"; do
+        if ! [ -z "$hostname" ]; then
+            /bin/sed -i "/^$hostname/d" ${HOME}/.ssh/known_hosts
+        fi
+    done
+}
+

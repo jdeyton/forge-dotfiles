@@ -1,0 +1,35 @@
+
+# Get the ID of a container (by name).
+function docker-id() {
+    docker ps -aqf "name=$1"
+}
+
+# Get the IP of a container (by name).
+function docker-ip() {
+    id=$(docker-id "$1")
+    docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$id"
+}
+
+# Print summary of info about a container (by name).
+function docker-info() {
+    name=$1
+    id=$(docker-id "$name")
+    ip=$(docker-ip "$name")
+    cat <<EOF
+Name: $name
+ID:   $id
+IPv4: $ip
+EOF
+}
+
+# Attach a bash shell to a container (by name).
+function docker-bash() {
+    id=$(docker-id "$1")
+    docker exec -it $id /bin/bash
+}
+
+# Run a container, but attach a bash shell instead of running the default
+# entrypoint command.
+function docker-subvert-entrypoint() {
+    docker run --rm -it --entrypoint=/bin/bash $@
+}

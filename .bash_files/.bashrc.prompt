@@ -1,0 +1,14 @@
+# See if we can use a colored prompt.
+color_prompt="false"
+if [ -x /usr/bin/tput ] && /usr/bin/tput setaf 1 >&/dev/null; then
+    color_prompt="true"
+fi
+
+if [ $color_prompt = "true" ]; then
+    # Subdued green username@server, subdued blue path, >
+    PS1='\[\033[38;5;34m\]\u@\h \[\033[38;5;68m\]\w \[\033[00m\]> '
+else
+    PS1='\u@\h \w > '
+fi
+
+unset color_prompt
