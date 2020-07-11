@@ -1,9 +1,7 @@
-# forge-tools
-Dev tools, scripts, and the like.
-
-Currently, this project includes linux home directory configuration. This helps
-a lot to manage configuration because I work on many different hosts, but I
-really like a consistent shell.
+# forge-dotfiles
+This project includes dotfiles, i.e., linux home directory configuration. This
+helps to reduce differences in the environment across the many different linux
+hosts the author frequents.
 
 ## How to Deploy
 
